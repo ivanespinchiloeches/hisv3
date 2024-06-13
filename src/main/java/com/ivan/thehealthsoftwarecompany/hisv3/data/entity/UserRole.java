@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+@SuppressWarnings("unused")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

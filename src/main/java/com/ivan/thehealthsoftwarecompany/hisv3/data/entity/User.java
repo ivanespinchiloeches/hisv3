@@ -53,8 +53,7 @@ public class User implements UserDetails {
             uniqueConstraints = {@UniqueConstraint(columnNames = {"role_id","user_id"})})
     private Set<Role> roles = new LinkedHashSet<>();
 
-    @Transient
-    private boolean admin;
+
 
     @NotNull
     @Column(name = "email", nullable = false, length = Integer.MAX_VALUE)
@@ -63,17 +62,6 @@ public class User implements UserDetails {
 
     public User() {
     }
-
-    public User(String username, String password, Boolean enabled, String email) {
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-        this.email = email;
-    }
-
-
-
-
 
 
     public void setId(Long id) {
@@ -136,13 +124,6 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
     public String getEmail() {
         return email;
     }

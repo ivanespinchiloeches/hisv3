@@ -16,7 +16,7 @@ import java.util.Date;
 @ControllerAdvice
 public class AppControllerAdvice {
 
-    Logger LOG = LoggerFactory.getLogger(AppControllerAdvice.class);
+    final Logger LOG = LoggerFactory.getLogger(AppControllerAdvice.class);
 
     @ExceptionHandler(UsernameExistsException.class)
     public ResponseEntity<ErrorResponse> handleUsernameExistsException(UsernameExistsException ex) {
@@ -27,6 +27,7 @@ public class AppControllerAdvice {
                 .body(new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),ex.getMessage(),new Date()) );//"An error occurred probably related with a violation of the data integrity "
     }
 
+    @SuppressWarnings("SameReturnValue")
     @ExceptionHandler(IllegalArgumentException.class)
     public String handleIllegalArgumentException(UserNotFoundException ex, RedirectAttributes redirectAttributes) {
         // Log the exception and return a meaningful response
@@ -37,6 +38,7 @@ public class AppControllerAdvice {
     }
 
 
+    @SuppressWarnings("SameReturnValue")
     @ExceptionHandler(UserNotFoundException.class)
     public String handleUsernameNotFoundException(UserNotFoundException ex, RedirectAttributes redirectAttributes) {
         LOG.info(ex.getMessage());

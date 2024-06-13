@@ -3,10 +3,12 @@ package com.ivan.thehealthsoftwarecompany.hisv3.exception;
 import java.util.Date;
 
 
+@SuppressWarnings("unused")
 public class ErrorResponse {
     private int statusCode;
     private String errorMessage;
     private Date errorDate;
+
 
     public ErrorResponse() {
     }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MyErrorController implements ErrorController {
 
+    @SuppressWarnings("SameReturnValue")
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
         //do something like logging

@@ -26,9 +26,9 @@ import java.util.List;
 @RequestMapping("/users")
 public class AppController {
 	//@Autowired
-	private UserService service;
-	private RolesService rolesService;
-	private UserToUserDTO userToUserDTO;
+	private final UserService service;
+	private final RolesService rolesService;
+	private final UserToUserDTO userToUserDTO;
 
 	public AppController(UserService service, UserToUserDTO userToUserDTO, RolesServiceImpl rolesService) {
 		this.service = service;
@@ -36,7 +36,8 @@ public class AppController {
 		this.rolesService = rolesService;
     }
 
-	@RequestMapping({"/","/list"})
+	@SuppressWarnings("SameReturnValue")
+    @RequestMapping({"/","/list"})
 	public String viewHomePage(Model model) {
 		List<User> listUsers = service.findAllPlainUsers();
 		model.addAttribute("listUsers", listUsers);
@@ -60,7 +61,8 @@ public class AppController {
 
 	}
 
-	@RequestMapping("/delete/{id}")
+	@SuppressWarnings("SameReturnValue")
+    @RequestMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable Long id) {
 		service.deleteUser(id);
 

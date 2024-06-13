@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
         List<Tuple> tuples = userRepository.findAllWithoutRoles(sortByIdASC);
 
 
-        List<User> users = tuples.stream()
+        return tuples.stream()
                 .filter(Objects::nonNull)
                 .map(tuple -> {
                     User user = new User();
@@ -70,7 +70,6 @@ public class UserServiceImpl implements UserService {
                     return user;
                 })
                 .collect(Collectors.toList());
-        return users;
     }
 
     @Override

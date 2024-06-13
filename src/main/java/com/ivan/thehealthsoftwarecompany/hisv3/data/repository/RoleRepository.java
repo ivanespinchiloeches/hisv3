@@ -1,6 +1,7 @@
 package com.ivan.thehealthsoftwarecompany.hisv3.data.repository;
 
 import com.ivan.thehealthsoftwarecompany.hisv3.data.entity.Role;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,5 +13,6 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
     Optional<Role> findByName(String name);
     Set<Role> findAllByOrderByNameAsc();
     @Override
-    List<Role> findAll(Sort sortStrategy);
+    @NotNull
+    List<Role> findAll(@NotNull Sort sortStrategy);
 }

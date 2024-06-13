@@ -1,9 +1,5 @@
 package com.ivan.thehealthsoftwarecompany.hisv3.security;
 
-import io.jsonwebtoken.Jwts;
-
-import javax.crypto.SecretKey;
-
 
 public class TokenJwtConfig {
     public static final String ROLE_ADMIN = "ROLE_ADMIN";

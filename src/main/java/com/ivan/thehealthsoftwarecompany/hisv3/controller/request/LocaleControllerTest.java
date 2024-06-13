@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LocaleControllerTest {
 
     //Con Tag ,si se repiten los datos del texto y la desc se pueden agrupar las operations
+    @SuppressWarnings("SameReturnValue")
     @Tag(name="Locale", description = "Métodos del locale, para test.")
     @Schema(name = "Nombre del esquema", description = "Descripcion del schema", example = "Texto del ejemplo del schema")
     @Operation(summary = "Hola con cambio de idioma", description = "A partir del LocaleInterceptor cambia el idioma")
@@ -30,6 +31,7 @@ public class LocaleControllerTest {
         return "hello";
     }
 
+    @SuppressWarnings("SameReturnValue")
     @Tag(name="Locale", description = "Métodos del locale, para test.")
     @Operation(summary = "Hola con cambio de idioma", description = "A partir del LocaleInterceptor cambia el idioma")
     @GetMapping("/hello")

@@ -11,6 +11,7 @@ import lombok.Setter;
 import java.io.Serial;
 
 
+@SuppressWarnings("unused")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
