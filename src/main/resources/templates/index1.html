@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Manager</title>
+</head>
+<body>
+<div align="center">	
+	<div sec:authorize="isAuthenticated()">
+		Welcome <b><span sec:authentication="name">Username</span></b>
+		&nbsp;
+		<i><span sec:authentication="principal.authorities">Roles</span></i>
+	</div>
+		
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Logout" />
+	</form>
+	
+	<h1>User Manager</h1>
+	<div sec:authorize="hasAnyAuthority('ROLE_CREATOR', 'ROLE_ADMIN')">
+		<a href="/users/new">Create New User</a>
+	</div>
+	
+	<br/><br/>
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+				<th>User ID</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'ROLE_EDITOR')">Actions</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${listUsers}">
+				<td th:text="${user.id}">User ID</td>
+				<td th:text="${user.username}">Name</td>
+				<td th:text="${user.email}">Email</td>
+
+				
+				<td sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'ROLE_EDITOR')">
+					<a th:href="@{'/users/edit/' + ${user.id}}"
+						>Edit</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a
+							sec:authorize="hasAuthority('ROLE_ADMIN')"
+							th:href="@{'/users/delete/' + ${user.id}}"
+							th:onclick="if(!(confirm('Are you sure you want to delete this user? '  ) )) return false"
+					>Delete</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
