@@ -24,9 +24,6 @@ public class UserToUserDTO {
         }
 
 
-        //Set<Role> roles = user.getRoles();
-
-        //boolean isAdmin = roles.stream().anyMatch(role -> ROLE_ADMIN.equals(role.getName()));
         userDto.setRoles(user.getRoles());
         userDto.setAdmin(false);
 

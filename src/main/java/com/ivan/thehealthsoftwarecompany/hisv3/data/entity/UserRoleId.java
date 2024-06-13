@@ -27,19 +27,4 @@ public class UserRoleId implements java.io.Serializable {
     @Column(name = "user_id", nullable = false)
     private Integer userId;
 
-/*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        UserRoleId entity = (UserRoleId) o;
-        return Objects.equals(this.roleId, entity.roleId) &&
-                Objects.equals(this.userId, entity.userId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(roleId, userId);
-    }
-*/
 }

@@ -23,13 +23,11 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
     private final UserToUserDTO userToDTOMapper;
     private final UserDTOToUser userDTOToUserMapper;
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, UserToUserDTO userToDTOMapper, UserDTOToUser userDTOToUserMapper) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
         this.userToDTOMapper = userToDTOMapper;
         this.userDTOToUserMapper = userDTOToUserMapper;
     }
